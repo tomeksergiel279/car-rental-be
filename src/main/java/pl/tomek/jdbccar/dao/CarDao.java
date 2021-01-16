@@ -21,7 +21,7 @@ public class CarDao {
 
     public void saveCar(Car car){                                    //dodanie samochodu do bazy
 
-        String sql = "INSERT INTO Car VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Car VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{
                 car.getId(),
                 car.getImg(),
@@ -30,6 +30,7 @@ public class CarDao {
                 car.getColor(),
                 car.getProductionYear(),
                 car.getFuelType(),
+                car.getFuelUsagePer100Km(),
                 car.getPricePerDay(),
                 car.getGearBox(),
                 car.getAirConditioning()

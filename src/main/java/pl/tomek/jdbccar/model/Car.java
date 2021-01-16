@@ -10,6 +10,7 @@ public class Car {
   private String color;
   private long productionYear;
   private String fuelType;
+  private double fuelUsagePer100Km;
   private long pricePerDay;
   private String gearBox;
   private String airConditioning;
@@ -78,6 +79,15 @@ public class Car {
   }
 
 
+  public double getFuelUsagePer100Km() {
+    return fuelUsagePer100Km;
+  }
+
+  public void setFuelUsagePer100Km(double fuelUsagePer100Km) {
+    this.fuelUsagePer100Km = fuelUsagePer100Km;
+  }
+
+
   public long getPricePerDay() {
     return pricePerDay;
   }
@@ -104,4 +114,20 @@ public class Car {
     this.airConditioning = airConditioning;
   }
 
+  public Car(long id, String img, String mark, String model, String color, long productionYear, String fuelType, double fuelUsagePer100Km, long pricePerDay, String gearBox, String airConditioning) {
+    this.id = id;
+    this.img = img;
+    this.mark = mark;
+    this.model = model;
+    this.color = color;
+    this.productionYear = productionYear;
+    this.fuelType = fuelType;
+    this.fuelUsagePer100Km = fuelUsagePer100Km;
+    this.pricePerDay = pricePerDay;
+    this.gearBox = gearBox;
+    this.airConditioning = airConditioning;
+  }
+
+  public Car() {
+  }
 }
