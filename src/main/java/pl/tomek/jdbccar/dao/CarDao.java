@@ -38,13 +38,13 @@ public class CarDao {
 
     }
 
-    public List<Map<String, Object>> showCarByMark(String mark){               //pokazuje auta wpisanej marki
+    public List<Map<String, Object>> showCarByMark(String mark){               //pokazuje samochody wpisanej marki
         String sql = "SELECT * FROM Car WHERE mark LIKE ?";
         return jdbcTemplate.queryForList(sql, new Object[]{mark});
     }
 
 
-    public List<Map<String, Object>> showAllCars(){                          //pokazuje wszystkie auta
+    public List<Map<String, Object>> showAllCars(){                          //pokazuje wszystkie samochody
         String sql = "SELECT * FROM Car";
         return jdbcTemplate.queryForList(sql);
     }

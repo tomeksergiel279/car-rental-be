@@ -16,6 +16,7 @@ public class ClientApi {
 
     private ClientDao clientDao;
 
+
     @Autowired
     public ClientApi(ClientDao clientDao) {
         this.clientDao = clientDao;
@@ -26,9 +27,21 @@ public class ClientApi {
         return clientDao.showAllClients();
     }
 
+
     @PostMapping("/client/addClient")
-    public void addSamochod(@RequestBody Client client){
+    public void addSamoschod(@RequestBody Client client){
         clientDao.saveClient(client);
     }
+
+    @GetMapping("/client/loginRequest")
+    public List<Map<String, Object>> loginRequest(String l, String p){
+        return clientDao.loginRequest(l, p);
+    }
+
+    @GetMapping("/client/getUserOrder")
+    public List<Map<String, Object>> getUserOrder(int id){
+        return clientDao.getUserOrder(id);
+    }
+
 
 }
