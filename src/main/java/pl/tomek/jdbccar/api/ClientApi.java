@@ -1,5 +1,6 @@
 package pl.tomek.jdbccar.api;
 
+import org.atmosphere.config.service.Get;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import pl.tomek.jdbccar.model.Client;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 public class ClientApi {
@@ -23,25 +25,26 @@ public class ClientApi {
     }
 
     @GetMapping("/client/getClients")
-    public List<Map<String, Object>> GetClients(){
+    public List<Map<String, Object>> GetClients() {
         return clientDao.showAllClients();
     }
 
 
     @PostMapping("/client/addClient")
-    public void addSamoschod(@RequestBody Client client){
+    public void addClient(@RequestBody Client client) {
         clientDao.saveClient(client);
     }
 
-    @GetMapping("/client/loginRequest")
-    public List<Map<String, Object>> loginRequest(String l, String p){
-        return clientDao.loginRequest(l, p);
-    }
 
     @GetMapping("/client/getUserOrder")
-    public List<Map<String, Object>> getUserOrder(int id){
+    public List<Map<String, Object>> getUserOrder(int id) {
         return clientDao.getUserOrder(id);
     }
 
 
+    @PostMapping("client/loginRequest")
+    public List<Map<String, Object>> login(@RequestBody Client client){
+        List<Map<String, Object>> returnedClient =  clientDao.loadClientByLoginAndPassword(client.getLogin(), client.getPassword());
+        return returnedClient;
+    }
 }
